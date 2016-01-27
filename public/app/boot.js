@@ -1,10 +1,12 @@
 import 'reflect-metadata';
-import './styles.css!';
-import {AppComponent} from './app.component'
+import {bootstrap} from 'angular2/platform/browser';
+import {HTTP_PROVIDERS} from 'angular2/http';
 
-import { bootstrap } from 'angular2/platform/browser';
+import './styles.css!';
+import {AppComponent} from './app.component';
+
 //import { enableProdMode } from 'angular2/core';
 //enableProdMode();
 
-bootstrap(AppComponent);
+bootstrap(AppComponent,[HTTP_PROVIDERS]);
 
