@@ -22,19 +22,22 @@ app.use(methodOverride());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-/*pp.get('/', function(req, res){
+/*app.get('/', function(req, res){
 	res.sendfile(path.join(__dirname+'/public/index.html'));
 });*/
 
 app.get('/test', function (req, res) {
 
-  res.status(200).json({
-    "notes": [
-      {"id": 100, "content": "content1"},
-      {"id": 101, "content": "content2"},
-      {"id": 102, "content": "content3"}
-    ]
-  });
+  res.status(200).json([{
+                "customer": "Matt Giampietro",
+                "description": "Lorem ipsum dolor sit amet…",
+                "name": "project #1"
+            },
+            {
+                "customer": "test",
+                "description": "Lorem ipsum dolor sit amet…",
+                "name": "project #2"
+            }]);
   //res.sendFile(path.join(__dirname+'/public/index.html'));
 
 });

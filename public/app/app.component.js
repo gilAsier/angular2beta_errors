@@ -1,23 +1,32 @@
-import {Component, View, Injectable} from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Component, View} from 'angular2/core';
+import {Http, HTTP_PROVIDERS} from 'angular2/http';
+import {NgFor} from 'angular2/common';
+import Rx from 'rxjs/Rx';
 
 @Component({
-  selector: 'my-app'
+  selector: 'my-app',
+  providers: [HTTP_PROVIDERS]
 })
 @View({
-  templateUrl: "app/hello.html"
+  templateUrl: "app/hello.html",
+  directives: [NgFor]
 })
 export class AppComponent {
-  name: string;
-  result: Object;
+  static get parameters(){
+  	return [[Http]];
+  }
 
-  constructor(http: Http){
+  constructor(http){
   	this.name = "world";
-    http.get('/test')
-      // Call map on the response observable to get the parsed people object
-      .map(res => res.json())
-      // Subscribe to the observable to get the parsed people object and attach it to the
-      // component
-      .subscribe(res => this.result = res);
+  	this.http = http;	
+  }
+
+  getNotes(){
+  	this.http.get('/test')
+  		.map(res => res.json())
+  		.subscribe(
+  			res => {this.notes = res}, 
+  			err => console.error(err),
+  			() => console.log("Notes received"));
   }
 }

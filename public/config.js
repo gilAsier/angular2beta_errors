@@ -21,6 +21,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "reflect-metadata": "npm:reflect-metadata@0.1.2",
+    "rxjs": "npm:rxjs@5.0.0-beta.0",
     "zone.js": "npm:zone.js@0.5.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
